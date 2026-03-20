@@ -1,0 +1,8 @@
+@app.route('/sum', methods=['GET', 'POST'])
+def sum_numbers():
+    if request.method == 'POST':
+        numbers = request.form['numbers']
+        numbers_list = [int(num) for num in numbers.split(',')]
+        total = sum(numbers_list)
+        return render_template('sum.html', total=total)
+    return render_template('sum.html')
